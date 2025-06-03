@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Korpa - AMPerformance</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="js/cart.js"></script>
 </head>
 <body>
     <header>
@@ -110,5 +111,64 @@
             <p>&copy; 2024 AMPerformance. Sva prava zadržana.</p>
         </div>
     </footer>
+
+    <script>
+        // Cart page specific JavaScript
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItemsContainer = document.querySelector('.cart-items');
+            const emptyCartMessage = document.querySelector('.empty-cart-message');
+            const checkoutButton = document.querySelector('.checkout-button');
+            const subtotalAmount = document.querySelector('.subtotal-amount');
+            const totalAmount = document.querySelector('.total-amount');
+            const checkoutForm = document.querySelector('.checkout-form');
+
+            function updateCart() {
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                    checkoutButton.disabled = true;
+                    return;
+                }
+
+                emptyCartMessage.style.display = 'none';
+                checkoutButton.disabled = false;
+                
+                let subtotal = 0;
+                cartItemsContainer.innerHTML = '';
+
+                cart.forEach((item, index) => {
+                    subtotal += item.price;
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="item-details">
+                            <h3>${item.name}</h3>
+                            <p class="price">${item.price} KM</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="remove-item">Ukloni</button>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+
+                subtotalAmount.textContent = subtotal.toFixed(2) + ' KM';
+                totalAmount.textContent = (subtotal + 11).toFixed(2) + ' KM';
+            }
+
+            window.removeFromCart = function(index) {
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                cartCount = cart.length;
+                updateCartCount();
+                updateCart();
+            };
+
+            checkoutButton.addEventListener('click', () => {
+                checkoutForm.style.display = 'block';
+                checkoutButton.style.display = 'none';
+            });
+
+            updateCart();
+        });
+    </script>
 </body>
 </html>
