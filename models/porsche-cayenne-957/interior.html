@@ -383,7 +383,8 @@
 
         function addToCartFromPopup() {
             const details = productDetails[currentProductIndex];
-            addToCart(details.title, details.price, document.getElementById('popupImage').src);
+            const carModel = document.querySelector('.products-header h1').textContent.split('-')[0].trim();
+            addToCart(details.title, details.price, document.getElementById('popupImage').src, carModel);
             closeProductDetails();
         }
 
