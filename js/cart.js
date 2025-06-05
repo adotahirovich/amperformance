@@ -11,8 +11,8 @@ function updateCartCount() {
 }
 
 // Add item to cart
-function addToCart(name, price, image) {
-    cart.push({ name, price, image });
+function addToCart(name, price, image, carModel) {
+    cart.push({ name, price, image, carModel });
     cartCount = cart.length;
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = card.querySelector('h3').textContent;
             const price = parseFloat(card.querySelector('.price').textContent);
             const image = card.querySelector('img').src;
-            addToCart(name, price, image);
+            const carModel = document.querySelector('.products-header h1').textContent.split('-')[0].trim();
+            addToCart(name, price, image, carModel);
         });
     });
 });
