@@ -61,6 +61,83 @@
             font-size: 0.8rem;
         }
 
+        /* Engine Selector Styles */
+        .engine-selector {
+            background-color: var(--primary-white);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .engine-selector h2 {
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .fuel-type-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .fuel-button {
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent-gray);
+            background-color: var(--primary-white);
+            color: var(--accent-gray);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .fuel-button.active {
+            background-color: var(--primary-red);
+            border-color: var(--primary-red);
+            color: var(--primary-white);
+        }
+
+        .fuel-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .engine-dropdown {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .engine-dropdown label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gray);
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .engine-dropdown select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            background-color: var(--primary-white);
+            color: var(--accent-gray);
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .engine-dropdown select:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+
         /* Product Popup Styles */
         .product-popup {
             display: none;
@@ -162,6 +239,23 @@
 
         .product-card {
             cursor: pointer;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .fuel-type-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .fuel-button {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .engine-selector {
+                padding: 1rem;
+            }
         }
     </style>
 </head>

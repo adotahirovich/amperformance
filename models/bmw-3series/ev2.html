@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW 3 Series Exhaust Parts - AMPerformance</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="../../js/cart.js"></script>
+    <script src="../../js/language.js"></script>
+    <script src="../../js/navigation.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../../index.html">
+                    <img src="/AMlLogo.png" alt="AMPerformance Logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../../brands.html" class="active" data-translate="nav.chooseCar">Izaberi Auto</a>
+                <a href="../../about.html" data-translate="nav.about">O Nama</a>
+                <a href="../../contact.html" data-translate="nav.contact">Kontakt</a>
+                <a href="../../cart.html" class="cart-link">
+                    <span data-translate="nav.cart">Korpa</span> <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="language-selector">
+                <a href="#" data-lang="bs" class="active">BS</a>
+                <a href="#" data-lang="en">EN</a>
+            </div>
+            <button class="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="mobile-nav">
+                <a href="../../brands.html" data-translate="nav.chooseCar">Izaberi Auto</a>
+                <a href="../../about.html" data-translate="nav.about">O Nama</a>
+                <a href="../../contact.html" data-translate="nav.contact">Kontakt</a>
+                <a href="../../cart.html" class="cart-link">
+                    <span data-translate="nav.cart">Korpa</span> <span class="cart-count">0</span>
+                </a>
+                <div class="language-selector">
+                    <a href="#" data-lang="bs" class="active">BS</a>
+                    <a href="#" data-lang="en">EN</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="products-page">
+        <div class="products-header">
+            <h1>BMW 3 Series - <span data-translate="exhaust.title">Exhaust Parts</span></h1>
+            <p data-translate="exhaust.subtitle">Pronađite savršene dijelove za vaš automobil</p>
+        </div>
+
+        <div class="engine-selector">
+            <div class="selector-container">
+                <h2 data-translate="engine.selectEngine">Izaberite Motor</h2>
+                
+                <div class="engine-type-selector">
+                    <button class="engine-type-btn active" data-type="diesel" data-translate="engine.diesel">Dizel</button>
+                    <button class="engine-type-btn" data-type="petrol" data-translate="engine.petrol">Benzin</button>
+                </div>
+
+                <div class="engine-variant-selector">
+                    <select id="engineVariant" class="engine-dropdown">
+                        <option value="" data-translate="engine.selectVariant">Izaberite varijantu motora</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid" style="display: none;">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+
+        <div class="no-selection-message" id="noSelectionMessage">
+            <div class="message-content">
+                <h3 data-translate="engine.noSelection">Molimo izaberite motor da vidite dostupne dijelove</h3>
+                <p data-translate="engine.noSelectionDesc">Izaberite tip motora (Dizel/Benzin) i specifičnu varijantu da prikažemo kompatibilne dijelove za vaš BMW 3 Series.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+                <p id="modalPrice"></p>
+                <p id="modalEngine"></p>
+            </div>
+            <div class="image-gallery">
+                <div class="main-image-container">
+                    <img id="mainImage" src="" alt="">
+                    <div class="image-nav">
+                        <button id="prevImage" class="nav-btn">&lt;</button>
+                        <button id="nextImage" class="nav-btn">&gt;</button>
+                    </div>
+                </div>
+                <div class="thumbnail-container">
+                    <div id="thumbnails" class="thumbnails"></div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="modalAddToCart" class="add-to-cart-modal">Dodaj u Korpu</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 data-translate="footer.contact">Kontakt</h4>
+                <p>Email: amperformance.balkan@gmail.com</p>
+                <p>Telefon: +387 XX XXX XXX</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-translate="footer.quickNav">Brza Navigacija</h4>
+                <a href="../../brands.html" data-translate="nav.chooseCar">Izaberi Auto</a>
+                <a href="../../about.html" data-translate="nav.about">O Nama</a>
+                <a href="../../contact.html" data-translate="nav.contact">Kontakt</a>
+            </div>
+            <div class="footer-section">
+                <h4 data-translate="footer.followUs">Pratite Nas</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AMPerformance. <span data-translate="footer.rights">Sva prava zadržana</span>.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Engine data
+        const engineData = {
+            diesel: [
+                { value: '318d', label: '318d (143hp)', years: '2012-2018' },
+                { value: '320d', label: '320d (184hp)', years: '2012-2019' },
+                { value: '330d', label: '330d (258hp)', years: '2012-2019' },
+                { value: '335d', label: '335d (313hp)', years: '2013-2018' }
+            ],
+            petrol: [
+                { value: '316i', label: '316i (136hp)', years: '2012-2018' },
+                { value: '318i', label: '318i (156hp)', years: '2015-2019' },
+                { value: '320i', label: '320i (184hp)', years: '2012-2019' },
+                { value: '328i', label: '328i (245hp)', years: '2012-2016' },
+                { value: '330i', label: '330i (252hp)', years: '2015-2019' },
+                { value: '335i', label: '335i (306hp)', years: '2012-2015' },
+                { value: 'm3', label: 'M3 (431hp)', years: '2014-2018' }
+            ]
+        };
+
+        // Product data for each engine with multiple images
+        const productData = {
+            '318d': [
+                {
+                    name: 'Wagner Downpipe 318d',
+                    description: 'Catless downpipe za BMW F30 318d - povećava snagu i poboljšava zvuk motora',
+                    price: 950,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Milltek Cat-Back 318d',
+                    description: 'Cat-back sistem za BMW F30 318d - premium kvalitet sa sportskim zvukom',
+                    price: 1800,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg'
+                    ]
+                }
+            ],
+            '320d': [
+                {
+                    name: 'Wagner Downpipe 320d',
+                    description: 'Catless downpipe za BMW F30 320d - optimizovan za performanse',
+                    price: 1100,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Remus Cat-Back 320d',
+                    description: 'Cat-back sistem za BMW F30 320d - austrijsko inženjerstvo',
+                    price: 2200,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg',
+                        'https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg'
+                    ]
+                }
+            ],
+            '330d': [
+                {
+                    name: 'Wagner Downpipe 330d',
+                    description: 'Catless downpipe za BMW F30 330d - maksimalne performanse',
+                    price: 1300,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Akrapovic Cat-Back 330d',
+                    description: 'Titanium cat-back sistem za BMW F30 330d - Formula 1 tehnologija',
+                    price: 3500,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg',
+                        'https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg'
+                    ]
+                }
+            ],
+            '335d': [
+                {
+                    name: 'Wagner Downpipe 335d',
+                    description: 'Catless downpipe za BMW F30 335d - za ekstremne performanse',
+                    price: 1400,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Eisenmann Cat-Back 335d',
+                    description: 'Performance cat-back sistem za BMW F30 335d - njemačka preciznost',
+                    price: 2800,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg'
+                    ]
+                }
+            ],
+            '316i': [
+                {
+                    name: 'Milltek Cat-Back 316i',
+                    description: 'Cat-back sistem za BMW F30 316i - poboljšava zvuk i performanse',
+                    price: 1600,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg'
+                    ]
+                }
+            ],
+            '318i': [
+                {
+                    name: 'Remus Cat-Back 318i',
+                    description: 'Cat-back sistem za BMW F30 318i - sportski zvuk sa stilom',
+                    price: 1900,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg',
+                        'https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg'
+                    ]
+                }
+            ],
+            '320i': [
+                {
+                    name: 'Wagner Downpipe 320i',
+                    description: 'Catless downpipe za BMW F30 320i - oslobađa skrivenu snagu',
+                    price: 1200,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Milltek Cat-Back 320i',
+                    description: 'Cat-back sistem za BMW F30 320i - savršen balans zvuka i performansi',
+                    price: 2100,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg'
+                    ]
+                }
+            ],
+            '328i': [
+                {
+                    name: 'Wagner Downpipe 328i',
+                    description: 'Catless downpipe za BMW F30 328i - turbo optimizacija',
+                    price: 1250,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Remus Cat-Back 328i',
+                    description: 'Cat-back sistem za BMW F30 328i - premium zvuk i kvalitet',
+                    price: 2400,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg',
+                        'https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg'
+                    ]
+                }
+            ],
+            '330i': [
+                {
+                    name: 'Wagner Downpipe 330i',
+                    description: 'Catless downpipe za BMW F30 330i - maksimalna efikasnost',
+                    price: 1300,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Akrapovic Cat-Back 330i',
+                    description: 'Titanium cat-back sistem za BMW F30 330i - racing tehnologija',
+                    price: 3200,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg',
+                        'https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg'
+                    ]
+                }
+            ],
+            '335i': [
+                {
+                    name: 'Wagner Downpipe 335i',
+                    description: 'Catless downpipe za BMW F30 335i - twin-turbo optimizacija',
+                    price: 1200,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Remus Cat-Back 335i',
+                    description: 'Cat-back sistem za BMW F30 335i - agresivan zvuk za snažan motor',
+                    price: 2500,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg',
+                        'https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg'
+                    ]
+                },
+                {
+                    name: 'M Performance Tips 335i',
+                    description: 'Carbon fiber završeci za BMW F30 335i - OEM M Performance stil',
+                    price: 800,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg'
+                    ]
+                }
+            ],
+            'm3': [
+                {
+                    name: 'Akrapovic Evolution M3',
+                    description: 'Titanium evolution sistem za BMW F80 M3 - ultimativni performance upgrade',
+                    price: 5500,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg',
+                        'https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg'
+                    ]
+                },
+                {
+                    name: 'Eisenmann Race M3',
+                    description: 'Race cat-back sistem za BMW F80 M3 - track-ready performanse',
+                    price: 4200,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg'
+                    ]
+                },
+                {
+                    name: 'M Performance Downpipe M3',
+                    description: 'OEM downpipe za BMW F80 M3 - originalni BMW M Performance dio',
+                    price: 2800,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                }
+            ]
+        };
+
+        let currentEngineType = 'diesel';
+        let selectedEngine = '';
+        let currentProduct = null;
+        let currentImageIndex = 0;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            setupEngineSelector();
+            setupImageModal();
+            updateEngineVariants();
+        });
+
+        function setupEngineSelector() {
+            const engineTypeButtons = document.querySelectorAll('.engine-type-btn');
+            const engineVariantSelect = document.getElementById('engineVariant');
+
+            engineTypeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    engineTypeButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    currentEngineType = button.dataset.type;
+                    updateEngineVariants();
+                    hideProducts();
+                });
+            });
+
+            engineVariantSelect.addEventListener('change', (e) => {
+                selectedEngine = e.target.value;
+                if (selectedEngine) {
+                    showProducts(selectedEngine);
+                } else {
+                    hideProducts();
+                }
+            });
+        }
+
+        function updateEngineVariants() {
+            const engineVariantSelect = document.getElementById('engineVariant');
+            const engines = engineData[currentEngineType];
+            
+            // Clear existing options
+            engineVariantSelect.innerHTML = '<option value="">Izaberite varijantu motora</option>';
+            
+            // Add new options
+            engines.forEach(engine => {
+                const option = document.createElement('option');
+                option.value = engine.value;
+                option.textContent = `${engine.label} (${engine.years})`;
+                engineVariantSelect.appendChild(option);
+            });
+            
+            selectedEngine = '';
+        }
+
+        function showProducts(engineVariant) {
+            const productsGrid = document.getElementById('productsGrid');
+            const noSelectionMessage = document.getElementById('noSelectionMessage');
+            const products = productData[engineVariant] || [];
+
+            noSelectionMessage.style.display = 'none';
+            productsGrid.style.display = 'grid';
+            
+            // Clear existing products
+            productsGrid.innerHTML = '';
+            
+            // Add products
+            products.forEach((product, index) => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.images[0]}" alt="${product.name}" style="cursor: pointer;">
+                    <h3>${product.name}</h3>
+                    <p class="description">${product.description}</p>
+                    <p class="price">${product.price}</p>
+                    <button class="add-to-cart">Dodaj u Korpu</button>
+                `;
+                
+                // Add click handler for image
+                const productImage = productCard.querySelector('img');
+                productImage.addEventListener('click', () => {
+                    openImageModal(product, engineVariant);
+                });
+                
+                // Add click handler for add to cart
+                const addToCartBtn = productCard.querySelector('.add-to-cart');
+                addToCartBtn.addEventListener('click', () => {
+                    const engineInfo = engineData[currentEngineType].find(e => e.value === engineVariant);
+                    const carModel = `BMW 3 Series ${engineInfo.label}`;
+                    addToCart(product.name, product.price, product.images[0], carModel);
+                });
+                
+                productsGrid.appendChild(productCard);
+            });
+        }
+
+        function hideProducts() {
+            const productsGrid = document.getElementById('productsGrid');
+            const noSelectionMessage = document.getElementById('noSelectionMessage');
+            
+            productsGrid.style.display = 'none';
+            noSelectionMessage.style.display = 'block';
+        }
+
+        function setupImageModal() {
+            const modal = document.getElementById('imageModal');
+            const closeBtn = document.querySelector('.close');
+            const prevBtn = document.getElementById('prevImage');
+            const nextBtn = document.getElementById('nextImage');
+
+            closeBtn.addEventListener('click', closeImageModal);
+            prevBtn.addEventListener('click', () => changeImage(-1));
+            nextBtn.addEventListener('click', () => changeImage(1));
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeImageModal();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (modal.style.display === 'block') {
+                    if (e.key === 'Escape') closeImageModal();
+                    if (e.key === 'ArrowLeft') changeImage(-1);
+                    if (e.key === 'ArrowRight') changeImage(1);
+                }
+            });
+        }
+
+        function openImageModal(product, engineVariant) {
+            currentProduct = product;
+            currentImageIndex = 0;
+            
+            const modal = document.getElementById('imageModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalPrice = document.getElementById('modalPrice');
+            const modalEngine = document.getElementById('modalEngine');
+            const modalAddToCart = document.getElementById('modalAddToCart');
+
+            // Set product info
+            modalTitle.textContent = product.name;
+            modalDescription.textContent = product.description;
+            modalPrice.textContent = `${product.price} KM`;
+            
+            const engineInfo = engineData[currentEngineType].find(e => e.value === engineVariant);
+            modalEngine.textContent = `Za: BMW 3 Series ${engineInfo.label}`;
+
+            // Setup add to cart button
+            modalAddToCart.onclick = () => {
+                const carModel = `BMW 3 Series ${engineInfo.label}`;
+                addToCart(product.name, product.price, product.images[0], carModel);
+                closeImageModal();
+            };
+
+            // Setup images
+            updateModalImages();
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            currentProduct = null;
+        }
+
+        function changeImage(direction) {
+            if (!currentProduct) return;
+            
+            currentImageIndex += direction;
+            
+            if (currentImageIndex >= currentProduct.images.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = currentProduct.images.length - 1;
+            }
+            
+            updateModalImages();
+        }
+
+        function updateModalImages() {
+            if (!currentProduct) return;
+            
+            const mainImage = document.getElementById('mainImage');
+            const thumbnails = document.getElementById('thumbnails');
+            
+            // Update main image
+            mainImage.src = currentProduct.images[currentImageIndex];
+            mainImage.alt = currentProduct.name;
+            
+            // Update thumbnails
+            thumbnails.innerHTML = '';
+            currentProduct.images.forEach((image, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = image;
+                thumbnail.alt = `${currentProduct.name} ${index + 1}`;
+                thumbnail.className = index === currentImageIndex ? 'thumbnail active' : 'thumbnail';
+                thumbnail.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    updateModalImages();
+                });
+                thumbnails.appendChild(thumbnail);
+            });
+        }
+    </script>
+</body>
+</html>
