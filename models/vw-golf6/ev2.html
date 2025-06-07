@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW 3 Series Exhaust Parts - AMPerformance</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="../../js/cart.js"></script>
+    <script src="../../js/language.js"></script>
+    <script src="../../js/navigation.js"></script>
+    <style>
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 2;
+        }
+
+        .image-nav-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .prev-button {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .next-button {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .image-counter {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Product Popup Styles */
+        .product-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            margin: 20px auto;
+        }
+
+        .close-popup {
+            position: sticky;
+            top: 10px;
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            background: white;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .popup-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .popup-details h2 {
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+            text-align: left;
+            font-size: 1.8rem;
+        }
+
+        .popup-description {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .popup-features {
+            margin-bottom: 1rem;
+        }
+
+        .popup-features h3 {
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .popup-features ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+        }
+
+        .popup-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+
+        .popup-add-to-cart {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-red);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-add-to-cart:hover {
+            background-color: #cc0000;
+        }
+
+        .product-card {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../../index.html">
+                    <img src="../../AMlLogo.png" alt="AMPerformance Logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../../brands.html" class="active">Izaberi Auto</a>
+                <a href="../../about.html">O Nama</a>
+                <a href="../../contact.html">Kontakt</a>
+                <a href="../../cart.html" class="cart-link">
+                    Korpa <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="language-selector">
+                <a href="#" data-lang="bs" class="active">BS</a>
+                <a href="#" data-lang="en">EN</a>
+            </div>
+            <button class="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="mobile-nav">
+                <a href="../brands.html" data-translate="nav.chooseCar">Izaberi Auto</a>
+                <a href="../about.html" data-translate="nav.about">O Nama</a>
+                <a href="../contact.html" data-translate="nav.contact">Kontakt</a>
+                <a href="../cart.html" class="cart-link">
+                    <span data-translate="nav.cart">Korpa</span> <span class="cart-count">0</span>
+                </a>
+                <div class="language-selector">
+                    <a href="#" data-lang="bs" class="active">BS</a>
+                    <a href="#" data-lang="en">EN</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="products-page">
+        <div class="products-header">
+            <h1>BMW 3 Series - Exhaust Parts</h1>
+            <p>Pronađite savršene dijelove za vaš automobil</p>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card" onclick="showProductDetails(0)">
+                <div class="product-image-container">
+                    <button class="image-nav-button prev-button" onclick="prevImage(0); event.stopPropagation();">❮</button>
+                    <button class="image-nav-button next-button" onclick="nextImage(0); event.stopPropagation();">❯</button>
+                    <img src="https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg" alt="Downpipe" class="product-image">
+                    <div class="image-counter">1/3</div>
+                </div>
+                <h3>RM Downpipe</h3>
+                <p class="description">Catless downpipe za BMW F30 335i/340i</p>
+                <p class="price">1200</p>
+                <button class="add-to-cart" onclick="event.stopPropagation();">Dodaj u Korpu</button>
+            </div>
+
+            <div class="product-card" onclick="showProductDetails(1)">
+                <div class="product-image-container">
+                    <button class="image-nav-button prev-button" onclick="prevImage(1); event.stopPropagation();">❮</button>
+                    <button class="image-nav-button next-button" onclick="nextImage(1); event.stopPropagation();">❯</button>
+                    <img src="https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg" alt="Shift Knob" class="product-image">
+                    <div class="image-counter">1/3</div>
+                </div>
+                <h3>Remus Cat-Back</h3>
+                <p class="description">Cat-back sistem za BMW F30 335i/340i</p>
+                <p class="price">2500</p>
+                <button class="add-to-cart" onclick="event.stopPropagation();">Dodaj u Korpu</button>
+            </div>
+
+            <div class="product-card" onclick="showProductDetails(2)">
+                <div class="product-image-container">
+                    <button class="image-nav-button prev-button" onclick="prevImage(2); event.stopPropagation();">❮</button>
+                    <button class="image-nav-button next-button" onclick="nextImage(2); event.stopPropagation();">❯</button>
+                    <img src="https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg" alt="Cat-Back" class="product-image">
+                    <div class="image-counter">1/3</div>
+                </div>
+                <h3>M Performance Tips</h3>
+                <p class="description">Carbon fiber završeci za BMW F30</p>
+                <p class="price">800</p>
+                <button class="add-to-cart" onclick="event.stopPropagation();">Dodaj u Korpu</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Product Popup -->
+    <div class="product-popup" id="productPopup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closeProductDetails()">&times;</span>
+            <img class="popup-image" id="popupImage" src="" alt="">
+            <div class="popup-details">
+                <h2 id="popupTitle"></h2>
+                <p class="popup-description" id="popupDescription"></p>
+                <div class="popup-features">
+                    <h3>Karakteristike:</h3>
+                    <ul id="popupFeatures"></ul>
+                </div>
+                <p class="popup-price" id="popupPrice"></p>
+                <button class="popup-add-to-cart" onclick="addToCartFromPopup()">Dodaj u Korpu</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Kontakt</h4>
+                <p>Email: amperformance.balkan@gmail.com</p>
+                <p>Telefon: +387 XX XXX XXX</p>
+            </div>
+            <div class="footer-section">
+                <h4>Brza Navigacija</h4>
+                <a href="../../brands.html">Izaberi Auto</a>
+                <a href="../../about.html">O Nama</a>
+                <a href="../../contact.html">Kontakt</a>
+            </div>
+            <div class="footer-section">
+                <h4>Pratite Nas</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AMPerformance. Sva prava zadržana.</p>
+        </div>
+    </footer>
+
+    <script>
+        const productImages = [
+            [
+                "https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg",
+                "https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg",
+                "https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg"
+            ],
+            [
+                "https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg",
+                "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
+                "https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg"
+            ],
+            [
+                "https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg",
+                "https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg",
+                "https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg"
+            ]
+        ];
+
+        const currentImageIndex = [0, 0, 0];
+        let currentProductIndex = 0;
+
+        function updateImage(productIndex) {
+            const productCard = document.querySelectorAll('.product-card')[productIndex];
+            const image = productCard.querySelector('.product-image');
+            const counter = productCard.querySelector('.image-counter');
+            
+            image.src = productImages[productIndex][currentImageIndex[productIndex]];
+            counter.textContent = `${currentImageIndex[productIndex] + 1}/${productImages[productIndex].length}`;
+        }
+
+        function nextImage(productIndex) {
+            currentImageIndex[productIndex] = (currentImageIndex[productIndex] + 1) % productImages[productIndex].length;
+            updateImage(productIndex);
+        }
+
+        function prevImage(productIndex) {
+            currentImageIndex[productIndex] = (currentImageIndex[productIndex] - 1 + productImages[productIndex].length) % productImages[productIndex].length;
+            updateImage(productIndex);
+        }
+
+        const productDetails = [
+            {
+                title: "Ambient Light Kit",
+                description: "Vrhunski LED ambient light kit za BMW F30 koji transformiše unutrašnjost vašeg automobila. Komplet uključuje sve potrebne komponente za jednostavnu instalaciju.",
+                features: [
+                    "Više boja osvjetljenja",
+                    "Kontrola putem iDrive sistema",
+                    "Jednostavna plug-and-play instalacija",
+                    "Originalni BMW konektori",
+                    "2 godine garancije"
+                ],
+                price: 300
+            },
+            {
+                title: "M Performance Shift Knob",
+                description: "Ekskluzivna M Performance ručica mjenjača izrađena od premium carbon fibera. Savršeno se uklapa u enterijer vašeg BMW-a i pruža sportski osjećaj pri mijenjanju brzina.",
+                features: [
+                    "100% carbon fiber konstrukcija",
+                    "M Performance branding",
+                    "Ergonomski dizajn",
+                    "Kompatibilno sa manuelnim mjenjačem",
+                    "Uključen kit za instalaciju"
+                ],
+                price: 250
+            },
+            {
+                title: "M Performance Pedals",
+                description: "Set sportskih pedala od brušenog aluminijuma sa gumenim grip elementima. Dizajnirane za maksimalnu kontrolu i sportski izgled.",
+                features: [
+                    "Brušeni aluminijum finish",
+                    "Anti-slip gumene površine",
+                    "Komplet za gas, kočnicu i kvačilo",
+                    "Originalni BMW kvalitet",
+                    "Laka instalacija"
+                ],
+                price: 200
+            }
+        ];
+
+        function showProductDetails(index) {
+            const popup = document.getElementById('productPopup');
+            const details = productDetails[index];
+            currentProductIndex = index;
+            
+            document.getElementById('popupImage').src = document.querySelectorAll('.product-image')[index].src;
+            document.getElementById('popupTitle').textContent = details.title;
+            document.getElementById('popupDescription').textContent = details.description;
+            document.getElementById('popupPrice').textContent = details.price + " KM";
+            
+            const featuresList = document.getElementById('popupFeatures');
+            featuresList.innerHTML = details.features.map(feature => `<li>${feature}</li>`).join('');
+            
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductDetails() {
+            const popup = document.getElementById('productPopup');
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function addToCartFromPopup() {
+            const details = productDetails[currentProductIndex];
+            const carModel = document.querySelector('.products-header h1').textContent.split('-')[0].trim();
+            addToCart(details.title, details.price, document.getElementById('popupImage').src, carModel);
+            closeProductDetails();
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('productPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProductDetails();
+            }
+        });
+    </script>
+</body>
+</html>

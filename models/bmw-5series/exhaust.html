@@ -3,167 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMW 5 Series Exhaust Parts - AMPerformance</title>
+    <title>BMW 3 Series Exhaust Parts - AMPerformance</title>
     <link rel="stylesheet" href="../../styles.css">
     <script src="../../js/cart.js"></script>
     <script src="../../js/language.js"></script>
     <script src="../../js/navigation.js"></script>
-    <style>
-        .product-image-container {
-            position: relative;
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.3s ease;
-        }
-
-        .image-nav-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            z-index: 2;
-        }
-
-        .image-nav-button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .prev-button {
-            left: 0;
-            border-radius: 0 3px 3px 0;
-        }
-
-        .next-button {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .image-counter {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-        }
-
-        /* Product Popup Styles */
-        .product-popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .popup-content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            max-width: 600px;
-            width: 90%;
-            position: relative;
-            margin: 20px auto;
-        }
-
-        .close-popup {
-            position: sticky;
-            top: 10px;
-            float: right;
-            font-size: 24px;
-            cursor: pointer;
-            color: #333;
-            background: white;
-            width: 30px;
-            height: 30px;
-            text-align: center;
-            line-height: 30px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-
-        .popup-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-        }
-
-        .popup-details h2 {
-            color: var(--primary-black);
-            margin-bottom: 1rem;
-            text-align: left;
-            font-size: 1.8rem;
-        }
-
-        .popup-description {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .popup-features {
-            margin-bottom: 1rem;
-        }
-
-        .popup-features h3 {
-            color: var(--primary-red);
-            margin-bottom: 0.5rem;
-        }
-
-        .popup-features ul {
-            list-style-type: disc;
-            margin-left: 1.5rem;
-        }
-
-        .popup-price {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--primary-red);
-            margin-bottom: 1rem;
-        }
-
-        .popup-add-to-cart {
-            width: 100%;
-            padding: 1rem;
-            background-color: var(--primary-red);
-            color: var(--primary-white);
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .popup-add-to-cart:hover {
-            background-color: #cc0000;
-        }
-
-        .product-card {
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -174,11 +18,11 @@
                 </a>
             </div>
             <div class="nav-links">
-                <a href="../../brands.html" class="active">Izaberi Auto</a>
-                <a href="../../about.html">O Nama</a>
-                <a href="../../contact.html">Kontakt</a>
+                <a href="../../brands.html" class="active" data-translate="nav.chooseCar">Izaberi Auto</a>
+                <a href="../../about.html" data-translate="nav.about">O Nama</a>
+                <a href="../../contact.html" data-translate="nav.contact">Kontakt</a>
                 <a href="../../cart.html" class="cart-link">
-                    Korpa <span class="cart-count">0</span>
+                    <span data-translate="nav.cart">Korpa</span> <span class="cart-count">0</span>
                 </a>
             </div>
             <div class="language-selector">
@@ -191,10 +35,10 @@
                 <span></span>
             </button>
             <div class="mobile-nav">
-                <a href="../brands.html" data-translate="nav.chooseCar">Izaberi Auto</a>
-                <a href="../about.html" data-translate="nav.about">O Nama</a>
-                <a href="../contact.html" data-translate="nav.contact">Kontakt</a>
-                <a href="../cart.html" class="cart-link">
+                <a href="../../brands.html" data-translate="nav.chooseCar">Izaberi Auto</a>
+                <a href="../../about.html" data-translate="nav.about">O Nama</a>
+                <a href="../../contact.html" data-translate="nav.contact">Kontakt</a>
+                <a href="../../cart.html" class="cart-link">
                     <span data-translate="nav.cart">Korpa</span> <span class="cart-count">0</span>
                 </a>
                 <div class="language-selector">
@@ -207,66 +51,63 @@
 
     <main class="products-page">
         <div class="products-header">
-            <h1>BMW 5 Series - Exhaust Parts</h1>
-            <p>Pronađite savršene dijelove za vaš automobil</p>
+            <h1>BMW 3 Series - <span data-translate="exhaust.title">Exhaust Parts</span></h1>
+            <p data-translate="exhaust.subtitle">Pronađite savršene dijelove za vaš automobil</p>
         </div>
 
-        <div class="products-grid">
-            <div class="product-card" onclick="showProductDetails(0)">
-                <div class="product-image-container">
-                    <button class="image-nav-button prev-button" onclick="prevImage(0); event.stopPropagation();">❮</button>
-                    <button class="image-nav-button next-button" onclick="nextImage(0); event.stopPropagation();">❯</button>
-                    <img src="https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg" alt="Downpipe" class="product-image">
-                    <div class="image-counter">1/3</div>
+        <div class="engine-selector">
+            <div class="selector-container">
+                <h2 data-translate="engine.selectEngine">Izaberite Motor</h2>
+                
+                <div class="engine-type-selector">
+                    <button class="engine-type-btn active" data-type="diesel" data-translate="engine.diesel">Dizel</button>
+                    <button class="engine-type-btn" data-type="petrol" data-translate="engine.petrol">Benzin</button>
                 </div>
-                <h3>RM Downpipe</h3>
-                <p class="description">Catless downpipe za BMW F10 530d</p>
-                <p class="price">1200</p>
-                <button class="add-to-cart" onclick="event.stopPropagation();">Dodaj u Korpu</button>
-            </div>
 
-            <div class="product-card" onclick="showProductDetails(1)">
-                <div class="product-image-container">
-                    <button class="image-nav-button prev-button" onclick="prevImage(1); event.stopPropagation();">❮</button>
-                    <button class="image-nav-button next-button" onclick="nextImage(1); event.stopPropagation();">❯</button>
-                    <img src="https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg" alt="Shift Knob" class="product-image">
-                    <div class="image-counter">1/3</div>
+                <div class="engine-variant-selector">
+                    <select id="engineVariant" class="engine-dropdown">
+                        <option value="" data-translate="engine.selectVariant">Izaberite varijantu motora</option>
+                    </select>
                 </div>
-                <h3>Remus Cat-Back</h3>
-                <p class="description">Cat-back sistem za BMW F10 535i</p>
-                <p class="price">2500</p>
-                <button class="add-to-cart" onclick="event.stopPropagation();">Dodaj u Korpu</button>
             </div>
+        </div>
 
-            <div class="product-card" onclick="showProductDetails(2)">
-                <div class="product-image-container">
-                    <button class="image-nav-button prev-button" onclick="prevImage(2); event.stopPropagation();">❮</button>
-                    <button class="image-nav-button next-button" onclick="nextImage(2); event.stopPropagation();">❯</button>
-                    <img src="https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg" alt="Cat-Back" class="product-image">
-                    <div class="image-counter">1/3</div>
-                </div>
-                <h3>M Performance Tips</h3>
-                <p class="description">Carbon fiber završeci za BMW F10</p>
-                <p class="price">800</p>
-                <button class="add-to-cart" onclick="event.stopPropagation();">Dodaj u Korpu</button>
+        <div class="products-grid" id="productsGrid" style="display: none;">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+
+        <div class="no-selection-message" id="noSelectionMessage">
+            <div class="message-content">
+                <h3 data-translate="engine.noSelection">Molimo izaberite motor da vidite dostupne dijelove</h3>
+                <p data-translate="engine.noSelectionDesc">Izaberite tip motora (Dizel/Benzin) i specifičnu varijantu da prikažemo kompatibilne dijelove za vaš BMW 3 Series.</p>
             </div>
         </div>
     </main>
 
-    <!-- Product Popup -->
-    <div class="product-popup" id="productPopup">
-        <div class="popup-content">
-            <span class="close-popup" onclick="closeProductDetails()">&times;</span>
-            <img class="popup-image" id="popupImage" src="" alt="">
-            <div class="popup-details">
-                <h2 id="popupTitle"></h2>
-                <p class="popup-description" id="popupDescription"></p>
-                <div class="popup-features">
-                    <h3>Karakteristike:</h3>
-                    <ul id="popupFeatures"></ul>
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+                <p id="modalPrice"></p>
+                <p id="modalEngine"></p>
+            </div>
+            <div class="image-gallery">
+                <div class="main-image-container">
+                    <img id="mainImage" src="" alt="">
+                    <div class="image-nav">
+                        <button id="prevImage" class="nav-btn"><</button>
+                        <button id="nextImage" class="nav-btn">></button>
+                    </div>
                 </div>
-                <p class="popup-price" id="popupPrice"></p>
-                <button class="popup-add-to-cart" onclick="addToCartFromPopup()">Dodaj u Korpu</button>
+                <div class="thumbnail-container">
+                    <div id="thumbnails" class="thumbnails"></div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="modalAddToCart" class="add-to-cart-modal">Dodaj u Korpu</button>
             </div>
         </div>
     </div>
@@ -274,18 +115,18 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Kontakt</h4>
+                <h4 data-translate="footer.contact">Kontakt</h4>
                 <p>Email: amperformance.balkan@gmail.com</p>
                 <p>Telefon: +387 XX XXX XXX</p>
             </div>
             <div class="footer-section">
-                <h4>Brza Navigacija</h4>
-                <a href="../../brands.html">Izaberi Auto</a>
-                <a href="../../about.html">O Nama</a>
-                <a href="../../contact.html">Kontakt</a>
+                <h4 data-translate="footer.quickNav">Brza Navigacija</h4>
+                <a href="../../brands.html" data-translate="nav.chooseCar">Izaberi Auto</a>
+                <a href="../../about.html" data-translate="nav.about">O Nama</a>
+                <a href="../../contact.html" data-translate="nav.contact">Kontakt</a>
             </div>
             <div class="footer-section">
-                <h4>Pratite Nas</h4>
+                <h4 data-translate="footer.followUs">Pratite Nas</h4>
                 <div class="social-links">
                     <a href="#">Facebook</a>
                     <a href="#">Instagram</a>
@@ -293,126 +134,590 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 AMPerformance. Sva prava zadržana.</p>
+            <p>&copy; 2024 AMPerformance. <span data-translate="footer.rights">Sva prava zadržana</span>.</p>
         </div>
     </footer>
 
     <script>
-        const productImages = [
-            [
-                "https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg",
-                "https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg",
-                "https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg"
+        // Engine data
+        const engineData = {
+            diesel: [
+                { value: '518d', label: '518d (143hp)', years: '2012-2018' },
+                { value: '520d', label: '520d (184hp)', years: '2012-2019' },
+                { value: '530d', label: '530d (258hp)', years: '2012-2019' },
+                { value: '535d', label: '535d (313hp)', years: '2013-2018' },
+                { value: '550d', label: '535d (313hp)', years: '2013-2018' }
             ],
-            [
-                "https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg",
-                "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
-                "https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg"
-            ],
-            [
-                "https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg",
-                "https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg",
-                "https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg"
+            petrol: [
+                { value: '516i', label: '516i (136hp)', years: '2012-2018' },
+                { value: '518i', label: '518i (156hp)', years: '2015-2019' },
+                { value: '520i', label: '520i (184hp)', years: '2012-2019' },
+                { value: '528i', label: '528i (245hp)', years: '2012-2016' },
+                { value: '530i', label: '530i (252hp)', years: '2015-2019' },
+                { value: '535i', label: '535i (306hp)', years: '2012-2015' },,
+                { value: '550i', label: '535i (306hp)', years: '2012-2015' },
+                { value: 'M5', label: 'M5 (431hp)', years: '2014-2018' }
             ]
-        ];
+        };
 
-        const currentImageIndex = [0, 0, 0];
-        let currentProductIndex = 0;
+        // Product data for each engine with multiple images
+        const productData = {
+            '518d': [
+                {
+                    name: 'Wagner Downpipe 518d',
+                    description: 'Catless downpipe za BMW F10 518d - povećava snagu i poboljšava zvuk motora',
+                    price: 950,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Milltek Cat-Back 518d',
+                    description: 'Cat-back sistem za BMW F10 518d - premium kvalitet sa sportskim zvukom',
+                    price: 1800,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg'
+                    ]
+                }
+            ],
+            '520d': [
+                {
+                    name: 'Wagner Downpipe 520d',
+                    description: 'Catless downpipe za BMW F10 520d - optimizovan za performanse',
+                    price: 1100,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Remus Cat-Back 520d',
+                    description: 'Cat-back sistem za BMW F10 520d - austrijsko inženjerstvo',
+                    price: 2200,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg',
+                        'https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg'
+                    ]
+                }
+            ],
+            '530d': [
+                {
+                    name: 'Wagner Downpipe 530d',
+                    description: 'Catless downpipe za BMW F10 530d - maksimalne performanse',
+                    price: 1300,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Akrapovic Cat-Back 530d',
+                    description: 'Titanium cat-back sistem za BMW F10 530d - Formula 1 tehnologija',
+                    price: 3500,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg',
+                        'https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg'
+                    ]
+                }
+            ],
+            '535d': [
+                {
+                    name: 'Wagner Downpipe 535d',
+                    description: 'Catless downpipe za BMW F10 535d - za ekstremne performanse',
+                    price: 1400,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Eisenmann Cat-Back 535d',
+                    description: 'Performance cat-back sistem za BMW F10 535d - njemačka preciznost',
+                    price: 2800,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg'
+                    ]
+                }
+            ],
+            '516i': [
+                {
+                    name: 'Milltek Cat-Back 516i',
+                    description: 'Cat-back sistem za BMW F10 516i - poboljšava zvuk i performanse',
+                    price: 1600,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg'
+                    ]
+                }
+            ],
+            '518i': [
+                {
+                    name: 'Remus Cat-Back 518i',
+                    description: 'Cat-back sistem za BMW F10 518i - sportski zvuk sa stilom',
+                    price: 1900,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg',
+                        'https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg'
+                    ]
+                }
+            ],
+            '520i': [
+                {
+                    name: 'Wagner Downpipe 520i',
+                    description: 'Catless downpipe za BMW F10 520i - oslobađa skrivenu snagu',
+                    price: 1200,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Milltek Cat-Back 520i',
+                    description: 'Cat-back sistem za BMW F10 520i - savršen balans zvuka i performansi',
+                    price: 2100,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg'
+                    ]
+                }
+            ],
+            '528i': [
+                {
+                    name: 'Wagner Downpipe 528i',
+                    description: 'Catless downpipe za BMW F10 528i - turbo optimizacija',
+                    price: 1250,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Remus Cat-Back 528i',
+                    description: 'Cat-back sistem za BMW F10 528i - premium zvuk i kvalitet',
+                    price: 2400,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg',
+                        'https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg'
+                    ]
+                }
+            ],
+            '530i': [
+                {
+                    name: 'Wagner Downpipe 530i',
+                    description: 'Catless downpipe za BMW F10 530i - maksimalna efikasnost',
+                    price: 1300,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Akrapovic Cat-Back 530i',
+                    description: 'Titanium cat-back sistem za BMW F10 530i - racing tehnologija',
+                    price: 3200,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg',
+                        'https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg'
+                    ]
+                }
+            ],
+            '535i': [
+                {
+                    name: 'Wagner Downpipe 535i',
+                    description: 'Catless downpipe za BMW F10 535i - twin-turbo optimizacija',
+                    price: 1200,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Remus Cat-Back 535i',
+                    description: 'Cat-back sistem za BMW F10 535i - agresivan zvuk za snažan motor',
+                    price: 2500,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg',
+                        'https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg'
+                    ]
+                },
+                {
+                    name: 'M Performance Tips 535i',
+                    description: 'Carbon fiber završeci za BMW F10 535i - OEM M Performance stil',
+                    price: 800,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg'
+                    ]
+                }
+            ],
+            '550i': [
+                {
+                    name: 'Wagner Downpipe 550i',
+                    description: 'Catless downpipe za BMW F10 550i - twin-turbo optimizacija',
+                    price: 1200,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                },
+                {
+                    name: 'Remus Cat-Back 550i',
+                    description: 'Cat-back sistem za BMW F10 550i - agresivan zvuk za snažan motor',
+                    price: 2500,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/892522/pexels-photo-892522.jpeg',
+                        'https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg'
+                    ]
+                },
+                {
+                    name: 'M Performance Tips 550i',
+                    description: 'Carbon fiber završeci za BMW F10 550i - OEM M Performance stil',
+                    price: 800,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg'
+                    ]
+                }
+            ],
+            'M5': [
+                {
+                    name: 'Akrapovic Evolution M5',
+                    description: 'Titanium evolution sistem za BMW F10 M5 - ultimativni performance upgrade',
+                    price: 5500,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg',
+                        'https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg'
+                    ]
+                },
+                {
+                    name: 'Eisenmann Race M5',
+                    description: 'Race cat-back sistem za BMW F10 M5 - track-ready performanse',
+                    price: 4200,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg',
+                        'https://images.pexels.com/photos/1335077/pexels-photo-1335077.jpeg'
+                    ]
+                },
+                {
+                    name: 'M Performance Downpipe M5',
+                    description: 'OEM downpipe za BMW F10 M5 - originalni BMW M Performance dio',
+                    price: 2800,
+                    images: [
+                        'https://images.pexels.com/photos/3778769/pexels-photo-3778769.jpeg',
+                        'https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg',
+                        'https://images.pexels.com/photos/3846217/pexels-photo-3846217.jpeg'
+                    ]
+                }
+            ]
+        };
 
-        function updateImage(productIndex) {
-            const productCard = document.querySelectorAll('.product-card')[productIndex];
-            const image = productCard.querySelector('.product-image');
-            const counter = productCard.querySelector('.image-counter');
+        let currentEngineType = 'diesel';
+        let selectedEngine = '';
+        let currentProduct = null;
+        let currentImageIndex = 0;
+        let productImageIndices = {}; // Track current image index for each product
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            setupEngineSelector();
+            setupImageModal();
+            updateEngineVariants();
+        });
+
+        function setupEngineSelector() {
+            const engineTypeButtons = document.querySelectorAll('.engine-type-btn');
+            const engineVariantSelect = document.getElementById('engineVariant');
+
+            engineTypeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    engineTypeButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    currentEngineType = button.dataset.type;
+                    updateEngineVariants();
+                    hideProducts();
+                });
+            });
+
+            engineVariantSelect.addEventListener('change', (e) => {
+                selectedEngine = e.target.value;
+                if (selectedEngine) {
+                    showProducts(selectedEngine);
+                } else {
+                    hideProducts();
+                }
+            });
+        }
+
+        function updateEngineVariants() {
+            const engineVariantSelect = document.getElementById('engineVariant');
+            const engines = engineData[currentEngineType];
             
-            image.src = productImages[productIndex][currentImageIndex[productIndex]];
-            counter.textContent = `${currentImageIndex[productIndex] + 1}/${productImages[productIndex].length}`;
+            // Clear existing options
+            engineVariantSelect.innerHTML = '<option value="">Izaberite varijantu motora</option>';
+            
+            // Add new options
+            engines.forEach(engine => {
+                const option = document.createElement('option');
+                option.value = engine.value;
+                option.textContent = `${engine.label} (${engine.years})`;
+                engineVariantSelect.appendChild(option);
+            });
+            
+            selectedEngine = '';
         }
 
-        function nextImage(productIndex) {
-            currentImageIndex[productIndex] = (currentImageIndex[productIndex] + 1) % productImages[productIndex].length;
-            updateImage(productIndex);
+        function showProducts(engineVariant) {
+            const productsGrid = document.getElementById('productsGrid');
+            const noSelectionMessage = document.getElementById('noSelectionMessage');
+            const products = productData[engineVariant] || [];
+
+            noSelectionMessage.style.display = 'none';
+            productsGrid.style.display = 'grid';
+            
+            // Clear existing products
+            productsGrid.innerHTML = '';
+            
+            // Reset image indices
+            productImageIndices = {};
+            
+            // Add products
+            products.forEach((product, index) => {
+                const productId = `${engineVariant}-${index}`;
+                productImageIndices[productId] = 0; // Start with first image
+                
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.images[0]}" alt="${product.name}" data-product-id="${productId}">
+                        <div class="product-image-nav">
+                            <button class="product-nav-btn prev-btn" data-product-id="${productId}" data-direction="prev">‹</button>
+                            <button class="product-nav-btn next-btn" data-product-id="${productId}" data-direction="next">›</button>
+                        </div>
+                        <div class="image-indicators">
+                            ${product.images.map((_, imgIndex) => 
+                                `<span class="indicator ${imgIndex === 0 ? 'active' : ''}" data-product-id="${productId}" data-image-index="${imgIndex}"></span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                    <h3>${product.name}</h3>
+                    <p class="description">${product.description}</p>
+                    <p class="price">${product.price}</p>
+                    <button class="add-to-cart">Dodaj u Korpu</button>
+                `;
+                
+                // Add click handler for modal (only on image, not navigation buttons)
+                const productImage = productCard.querySelector('img');
+                productImage.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openImageModal(product, engineVariant);
+                });
+                
+                // Add click handlers for product card navigation
+                const prevBtn = productCard.querySelector('.prev-btn');
+                const nextBtn = productCard.querySelector('.next-btn');
+                
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    changeProductImage(productId, product, -1);
+                });
+                
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    changeProductImage(productId, product, 1);
+                });
+                
+                // Add click handlers for indicators
+                const indicators = productCard.querySelectorAll('.indicator');
+                indicators.forEach(indicator => {
+                    indicator.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const imageIndex = parseInt(indicator.dataset.imageIndex);
+                        setProductImage(productId, product, imageIndex);
+                    });
+                });
+                
+                // Add click handler for add to cart
+                const addToCartBtn = productCard.querySelector('.add-to-cart');
+                addToCartBtn.addEventListener('click', () => {
+                    const engineInfo = engineData[currentEngineType].find(e => e.value === engineVariant);
+                    const carModel = `BMW 3 Series ${engineInfo.label}`;
+                    addToCart(product.name, product.price, product.images[0], carModel);
+                });
+                
+                productsGrid.appendChild(productCard);
+            });
         }
 
-        function prevImage(productIndex) {
-            currentImageIndex[productIndex] = (currentImageIndex[productIndex] - 1 + productImages[productIndex].length) % productImages[productIndex].length;
-            updateImage(productIndex);
-        }
-
-        const productDetails = [
-            {
-                title: "Ambient Light Kit",
-                description: "Vrhunski LED ambient light kit za BMW F10 koji transformiše unutrašnjost vašeg automobila. Komplet uključuje sve potrebne komponente za jednostavnu instalaciju.",
-                features: [
-                    "Više boja osvjetljenja",
-                    "Kontrola putem iDrive sistema",
-                    "Jednostavna plug-and-play instalacija",
-                    "Originalni BMW konektori",
-                    "2 godine garancije"
-                ],
-                price: 300
-            },
-            {
-                title: "M Performance Shift Knob",
-                description: "Ekskluzivna M Performance ručica mjenjača izrađena od premium carbon fibera. Savršeno se uklapa u enterijer vašeg BMW-a i pruža sportski osjećaj pri mijenjanju brzina.",
-                features: [
-                    "100% carbon fiber konstrukcija",
-                    "M Performance branding",
-                    "Ergonomski dizajn",
-                    "Kompatibilno sa manuelnim mjenjačem",
-                    "Uključen kit za instalaciju"
-                ],
-                price: 250
-            },
-            {
-                title: "M Performance Pedals",
-                description: "Set sportskih pedala od brušenog aluminijuma sa gumenim grip elementima. Dizajnirane za maksimalnu kontrolu i sportski izgled.",
-                features: [
-                    "Brušeni aluminijum finish",
-                    "Anti-slip gumene površine",
-                    "Komplet za gas, kočnicu i kvačilo",
-                    "Originalni BMW kvalitet",
-                    "Laka instalacija"
-                ],
-                price: 200
+        function changeProductImage(productId, product, direction) {
+            const currentIndex = productImageIndices[productId];
+            let newIndex = currentIndex + direction;
+            
+            if (newIndex >= product.images.length) {
+                newIndex = 0;
+            } else if (newIndex < 0) {
+                newIndex = product.images.length - 1;
             }
-        ];
+            
+            setProductImage(productId, product, newIndex);
+        }
 
-        function showProductDetails(index) {
-            const popup = document.getElementById('productPopup');
-            const details = productDetails[index];
-            currentProductIndex = index;
+        function setProductImage(productId, product, imageIndex) {
+            productImageIndices[productId] = imageIndex;
             
-            document.getElementById('popupImage').src = document.querySelectorAll('.product-image')[index].src;
-            document.getElementById('popupTitle').textContent = details.title;
-            document.getElementById('popupDescription').textContent = details.description;
-            document.getElementById('popupPrice').textContent = details.price + " KM";
+            // Update image
+            const productImage = document.querySelector(`img[data-product-id="${productId}"]`);
+            productImage.src = product.images[imageIndex];
             
-            const featuresList = document.getElementById('popupFeatures');
-            featuresList.innerHTML = details.features.map(feature => `<li>${feature}</li>`).join('');
+            // Update indicators
+            const indicators = document.querySelectorAll(`.indicator[data-product-id="${productId}"]`);
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === imageIndex);
+            });
+        }
+
+        function hideProducts() {
+            const productsGrid = document.getElementById('productsGrid');
+            const noSelectionMessage = document.getElementById('noSelectionMessage');
             
-            popup.style.display = 'flex';
+            productsGrid.style.display = 'none';
+            noSelectionMessage.style.display = 'block';
+        }
+
+        function setupImageModal() {
+            const modal = document.getElementById('imageModal');
+            const closeBtn = document.querySelector('.close');
+            const prevBtn = document.getElementById('prevImage');
+            const nextBtn = document.getElementById('nextImage');
+
+            closeBtn.addEventListener('click', closeImageModal);
+            prevBtn.addEventListener('click', () => changeImage(-1));
+            nextBtn.addEventListener('click', () => changeImage(1));
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeImageModal();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (modal.style.display === 'block') {
+                    if (e.key === 'Escape') closeImageModal();
+                    if (e.key === 'ArrowLeft') changeImage(-1);
+                    if (e.key === 'ArrowRight') changeImage(1);
+                }
+            });
+        }
+
+        function openImageModal(product, engineVariant) {
+            currentProduct = product;
+            currentImageIndex = 0;
+            
+            const modal = document.getElementById('imageModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalPrice = document.getElementById('modalPrice');
+            const modalEngine = document.getElementById('modalEngine');
+            const modalAddToCart = document.getElementById('modalAddToCart');
+
+            // Set product info
+            modalTitle.textContent = product.name;
+            modalDescription.textContent = product.description;
+            modalPrice.textContent = `${product.price} KM`;
+            
+            const engineInfo = engineData[currentEngineType].find(e => e.value === engineVariant);
+            modalEngine.textContent = `Za: BMW 3 Series ${engineInfo.label}`;
+
+            // Setup add to cart button
+            modalAddToCart.onclick = () => {
+                const carModel = `BMW 3 Series ${engineInfo.label}`;
+                addToCart(product.name, product.price, product.images[0], carModel);
+                closeImageModal();
+            };
+
+            // Setup images
+            updateModalImages();
+            
+            modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
-        function closeProductDetails() {
-            const popup = document.getElementById('productPopup');
-            popup.style.display = 'none';
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
             document.body.style.overflow = 'auto';
+            currentProduct = null;
         }
 
-        function addToCartFromPopup() {
-            const details = productDetails[currentProductIndex];
-            const carModel = document.querySelector('.products-header h1').textContent.split('-')[0].trim();
-            addToCart(details.title, details.price, document.getElementById('popupImage').src, carModel);
-            closeProductDetails();
-        }
-
-        // Close popup when clicking outside
-        document.getElementById('productPopup').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeProductDetails();
+        function changeImage(direction) {
+            if (!currentProduct) return;
+            
+            currentImageIndex += direction;
+            
+            if (currentImageIndex >= currentProduct.images.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = currentProduct.images.length - 1;
             }
-        });
+            
+            updateModalImages();
+        }
+
+        function updateModalImages() {
+            if (!currentProduct) return;
+            
+            const mainImage = document.getElementById('mainImage');
+            const thumbnails = document.getElementById('thumbnails');
+            
+            // Update main image
+            mainImage.src = currentProduct.images[currentImageIndex];
+            mainImage.alt = currentProduct.name;
+            
+            // Update thumbnails
+            thumbnails.innerHTML = '';
+            currentProduct.images.forEach((image, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = image;
+                thumbnail.alt = `${currentProduct.name} ${index + 1}`;
+                thumbnail.className = index === currentImageIndex ? 'thumbnail active' : 'thumbnail';
+                thumbnail.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    updateModalImages();
+                });
+                thumbnails.appendChild(thumbnail);
+            });
+        }
     </script>
 </body>
 </html>
