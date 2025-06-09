@@ -92,6 +92,47 @@
         </section>
     </main>
 
+    <!-- AI Chatbot -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div id="chatbot-toggle" class="chatbot-toggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Pitaj nas!</span>
+        </div>
+        
+        <div id="chatbot-window" class="chatbot-window">
+            <div class="chatbot-header">
+                <h3>AMPerformance Asistent</h3>
+                <button id="chatbot-close" class="chatbot-close">&times;</button>
+            </div>
+            
+            <div id="chatbot-messages" class="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        Zdravo! 👋 Ja sam AMPerformance asistent. Mogu da vam pomognem sa informacijama o:
+                        <br><br>
+                        • Dostavi i cenama<br>
+                        • Proizvodima i kompatibilnosti<br>
+                        • Narudžbinama<br>
+                        • Općim pitanjima
+                        <br><br>
+                        Kako mogu da vam pomognem?
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Ukucajte vaše pitanje..." maxlength="500">
+                <button id="chatbot-send">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m22 2-7 20-4-9-9-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -117,5 +158,172 @@
             <p>&copy; 2024 AMPerformance. <span data-translate="footer.rights">Sva prava zadržana</span>.</p>
         </div>
     </footer>
+
+    <script>
+        // AI Chatbot functionality
+        class AMPerformanceChatbot {
+            constructor() {
+                this.isOpen = false;
+                this.responses = {
+                    // Dostava i cene
+                    dostava: {
+                        keywords: ['dostava', 'dostavu', 'dostaviti', 'shipping', 'delivery', 'koliko košta dostava', 'cena dostave', 'price delivery'],
+                        response: '📦 <strong>Dostava:</strong><br>• Cena dostave: 11 KM<br>• Dostava u BiH: 2-3 radna dana<br>• Besplatna dostava za narudžbe preko 200 KM<br>• Dostavljamo putem BH Pošte i City Express'
+                    },
+                    
+                    vreme_dostave: {
+                        keywords: ['koliko treba', 'kada stiže', 'vreme dostave', 'delivery time', 'when arrive', 'kako dugo'],
+                        response: '⏰ <strong>Vreme dostave:</strong><br>• Sarajevo: 1-2 radna dana<br>• Ostale gradove u BiH: 2-3 radna dana<br>• Udaljene oblasti: 3-5 radnih dana<br>• Narudžbe se obrađuju u roku od 24h'
+                    },
+
+                    // Proizvodi
+                    proizvodi: {
+                        keywords: ['proizvod', 'proizvode', 'dijelove', 'parts', 'exhaust', 'downpipe', 'ambient', 'bmw', 'volkswagen', 'porsche'],
+                        response: '🔧 <strong>Naši proizvodi:</strong><br>• BMW dijelovi (F30, F10, E90)<br>• Volkswagen Golf 6/7 GTI/R<br>• Porsche Cayenne i Panamera<br>• Exhaust sistemi, Interior, Exterior<br>• Sve je originalno i certificirano!'
+                    },
+
+                    kompatibilnost: {
+                        keywords: ['kompatibilan', 'odgovara', 'fits', 'compatible', 'moj auto', 'my car', 'pasuje'],
+                        response: '🚗 <strong>Kompatibilnost:</strong><br>• Svaki proizvod ima specificiran model<br>• Proverite godište i tip motora<br>• Kontaktirajte nas za dodatne informacije<br>• Email: amperformance.balkan@gmail.com'
+                    },
+
+                    // Narudžbe
+                    narudzba: {
+                        keywords: ['narudžba', 'naručiti', 'order', 'kako naručiti', 'how to order', 'kupovina'],
+                        response: '🛒 <strong>Kako naručiti:</strong><br>1. Dodajte proizvode u korpu<br>2. Idite na checkout<br>3. Unesite podatke za dostavu<br>4. Pošaljite narudžbu<br>5. Kontaktiraćemo vas za potvrdu'
+                    },
+
+                    placanje: {
+                        keywords: ['plaćanje', 'payment', 'kako platiti', 'how to pay', 'novac', 'money'],
+                        response: '💳 <strong>Načini plaćanja:</strong><br>• Pouzećem (gotovina)<br>• Bankovna kartica<br>• Bankovni transfer<br>• PayPal (uskoro)<br>• Sigurno i pouzdano!'
+                    },
+
+                    // Kontakt
+                    kontakt: {
+                        keywords: ['kontakt', 'contact', 'telefon', 'email', 'adresa', 'lokacija'],
+                        response: '📞 <strong>Kontakt informacije:</strong><br>• Email: amperformance.balkan@gmail.com<br>• Telefon: +387 XX XXX XXX<br>• Adresa: Čengić Vila, Sarajevo<br>• Radno vreme: Pon-Pet 9-17h, Sub 9-14h'
+                    },
+
+                    // Garancija
+                    garancija: {
+                        keywords: ['garancija', 'warranty', 'garantuje', 'povrat', 'return'],
+                        response: '✅ <strong>Garancija:</strong><br>• 2 godine garancije na sve proizvode<br>• 30 dana za povrat (neotpakovano)<br>• Besplatna zamena u slučaju greške<br>• Originalni proizvodi sa sertifikatom'
+                    },
+
+                    // Default responses
+                    pozdrav: {
+                        keywords: ['zdravo', 'hello', 'hi', 'bok', 'pozdrav', 'dobro jutro', 'dobar dan'],
+                        response: '👋 Zdravo! Dobrodošli u AMPerformance! Kako mogu da vam pomognem danas?'
+                    },
+
+                    hvala: {
+                        keywords: ['hvala', 'thank you', 'thanks', 'zahvaljujem', 'super', 'odlično'],
+                        response: '😊 Nema na čemu! Uvek smo tu da pomognemo. Imate li još pitanja?'
+                    }
+                };
+
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+            }
+
+            bindEvents() {
+                const toggle = document.getElementById('chatbot-toggle');
+                const close = document.getElementById('chatbot-close');
+                const send = document.getElementById('chatbot-send');
+                const input = document.getElementById('chatbot-input');
+
+                toggle.addEventListener('click', () => this.toggleChat());
+                close.addEventListener('click', () => this.closeChat());
+                send.addEventListener('click', () => this.sendMessage());
+                
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.sendMessage();
+                    }
+                });
+            }
+
+            toggleChat() {
+                const window = document.getElementById('chatbot-window');
+                this.isOpen = !this.isOpen;
+                
+                if (this.isOpen) {
+                    window.style.display = 'flex';
+                    document.getElementById('chatbot-toggle').style.display = 'none';
+                } else {
+                    window.style.display = 'none';
+                    document.getElementById('chatbot-toggle').style.display = 'flex';
+                }
+            }
+
+            closeChat() {
+                const window = document.getElementById('chatbot-window');
+                window.style.display = 'none';
+                document.getElementById('chatbot-toggle').style.display = 'flex';
+                this.isOpen = false;
+            }
+
+            sendMessage() {
+                const input = document.getElementById('chatbot-input');
+                const message = input.value.trim();
+                
+                if (!message) return;
+
+                this.addMessage(message, 'user');
+                input.value = '';
+
+                // Simulate typing delay
+                setTimeout(() => {
+                    const response = this.generateResponse(message);
+                    this.addMessage(response, 'bot');
+                }, 1000);
+            }
+
+            addMessage(content, sender) {
+                const messagesContainer = document.getElementById('chatbot-messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}-message`;
+                
+                const messageContent = document.createElement('div');
+                messageContent.className = 'message-content';
+                messageContent.innerHTML = content;
+                
+                messageDiv.appendChild(messageContent);
+                messagesContainer.appendChild(messageDiv);
+                
+                // Scroll to bottom
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            generateResponse(userMessage) {
+                const message = userMessage.toLowerCase();
+                
+                // Check for specific keywords
+                for (const [category, data] of Object.entries(this.responses)) {
+                    for (const keyword of data.keywords) {
+                        if (message.includes(keyword.toLowerCase())) {
+                            return data.response;
+                        }
+                    }
+                }
+
+                // Default response
+                return `🤔 Nisam siguran kako da odgovorim na to pitanje. Možete me pitati o:<br><br>
+                • Dostavi i cenama<br>
+                • Proizvodima i kompatibilnosti<br>
+                • Narudžbinama i plaćanju<br>
+                • Kontakt informacijama<br><br>
+                Ili nas kontaktirajte direktno: <strong>amperformance.balkan@gmail.com</strong>`;
+            }
+        }
+
+        // Initialize chatbot when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new AMPerformanceChatbot();
+        });
+    </script>
 </body>
 </html>
